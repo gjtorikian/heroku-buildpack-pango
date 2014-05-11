@@ -25,7 +25,7 @@ function vendor() {
 
   echo "Fetching $binary" | indent
   mkdir -p $path
-  curl $binary -s -o - | tar xJ -C $path -f -
+  curl $binary -s -o - | tar xz -C $path -f -
 
   if [ -d "$path/bin" ]; then
     export PATH=$path/bin:$PATH
@@ -45,7 +45,7 @@ function vendor() {
 }
 
 echo "-----> Vendoring binaries"
-vendor "http://ftp.gnome.org/pub/gnome/sources/pango/1.36/pango-1.36.3.tar.xz"  "$BUILD_DIR/vendor/pango"
+vendor "http://miadzin.org/libpango.tgz"  "$BUILD_DIR/vendor/pango"
 
 echo "-----> Configuring build environment"
 
