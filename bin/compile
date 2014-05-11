@@ -6,7 +6,7 @@ set -e # fail fast
 # parse params
 BUILD_DIR=$1
 CACHE_DIR=$2
-BUILDPACK_NAME=cairo
+BUILDPACK_NAME=pango
 
 # use pigz if available for (potentially) faster decompression
 type pigz > /dev/null 2>&1 && alias tar='tar --use-compress-program=pigz'
@@ -45,16 +45,7 @@ function vendor() {
 }
 
 echo "-----> Vendoring binaries"
-vendor "https://s3.amazonaws.com/mojodna-heroku/cairo-1.12.16-1.tar.gz"  "$BUILD_DIR/vendor/cairo"
-vendor "https://s3.amazonaws.com/mojodna-heroku/freetype-2.5.0-1.tar.gz" "$BUILD_DIR/vendor/freetype"
-vendor "https://s3.amazonaws.com/mojodna-heroku/giflib-4.2.3-1.tar.gz" "$BUILD_DIR/vendor/giflib"
-vendor "https://s3.amazonaws.com/mojodna-heroku/pixman-0.30.2-1.tar.gz"  "$BUILD_DIR/vendor/pixman"
-
-echo "-----> Tweaking Cairo, FreeType, and Pixman include paths"
-
-# node-canvas isn't using pkg-config, so we need to set non-standard paths
-export CPPPATH="$BUILD_DIR/vendor/cairo/include/cairo:$BUILD_DIR/vendor/pixman/include/pixman-1:$BUILD_DIR/vendor/freetype/include/freetype2:$CPPPATH"
-export CPATH="$BUILD_DIR/vendor/cairo/include/cairo:$BUILD_DIR/vendor/pixman/include/pixman-1:$BUILD_DIR/vendor/freetype/include/freetype2:$CPATH"
+vendor "http://ftp.gnome.org/pub/gnome/sources/pango/1.36/pango-1.36.3.tar.xz"  "$BUILD_DIR/vendor/pango"
 
 echo "-----> Configuring build environment"
 
