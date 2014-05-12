@@ -1,13 +1,9 @@
-#!/usr/bin/env bash
-# bin/compile <build-dir> <cache-dir>
-
-set -e # fail fast
-
-# parse params
+# parse and derive params
 BUILD_DIR=$1
 CACHE_DIR=$2
-BUILDPACK_NAME=pango
 
+# debugm
+# set -x
 echo "-----> Building libpango and dependencies in '$PWD' with contents:"
 ls -a
 echo "-----> Present PATH's:"
@@ -30,9 +26,9 @@ pkg_install()
 
     if [[ "Darwin" == "$(uname)" ]]
     then
-      prefix="$HOME/Developer/heroku-buildpack-pango/vendor/local" # For local laptop testing
+  prefix="$HOME/Developer/heroku-buildpack-pango/vendor/local" # Just for my local laptop testing
     else
-      prefix="/app/vendor/local"
+  prefix="/app/vendor/local"
     fi
 
     # fetch and cache the source tar ball
@@ -40,14 +36,14 @@ pkg_install()
     cache_dir="${cache_prefix}/${dir}_${etag}";
 
     if [ -d "$cache_dir" ]; then
-      echo "-----> Reusing cached '$dir' ($etag)"
-      cp -a $cache_dir $prefix
+  echo "-----> Reusing cached '$dir' ($etag)"
+  cp -a $cache_dir $prefix
     else
-      echo "-----> Fetching and caching '$dir' ($etag)"
-      mkdir -p $prefix
-      curl -L "$url" -o - | tar x${taropt}f - -C $prefix
-      mkdir -p $cache_prefix
-      cp -a $prefix $cache_dir
+  echo "-----> Fetching and caching '$dir' ($etag)"
+  mkdir -p $prefix
+  curl -L "$url" -o - | tar x${taropt}f - -C $prefix
+  mkdir -p $cache_prefix
+  cp -a $prefix $cache_dir
     fi
 
     cd $prefix/$dir
