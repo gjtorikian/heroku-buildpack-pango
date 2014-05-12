@@ -4,7 +4,7 @@
 set -e # fail fast
 
 # parse params
-BUILD_DIR=$1
+BUILD_DIR=/app
 CACHE_DIR=$2
 
 BUILDPACK_NAME=pango
