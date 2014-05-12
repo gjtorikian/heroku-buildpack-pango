@@ -73,3 +73,7 @@ export PKG_CONFIG_PATH="\$PKG_CONFIG_PATH:${PKG_CONFIG_PATH//$BUILD_DIR//app}"
 export CPPPATH="\$CPPPATH:${CPPPATH//$BUILD_DIR//app}"
 export CPATH="\$CPATH:${CPATH//$BUILD_DIR//app}"
 EOF
+
+echo "-----> Prove it worked"
+echo `pkg-config --static --libs glib-2.0 gdk-pixbuf-2.0 cairo pango`
+echo `pkg-config --cflags glib-2.0 gdk-pixbuf-2.0 cairo pango`
