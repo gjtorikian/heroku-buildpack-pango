@@ -33,8 +33,10 @@ function vendor() {
   fi
 
   if [ -d "$path/lib/pkgconfig" ]; then
+    echo "Found $path/lib/pkgconfig"
     # pkg-config should handle compiler options (if used)
     export PKG_CONFIG_PATH="$path/lib/pkgconfig:$PKG_CONFIG_PATH"
+    echo $PKG_CONFIG_PATH
   fi
 
   # standard paths
