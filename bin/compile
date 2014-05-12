@@ -70,7 +70,11 @@ IFS='
 '
 
 read -r -d '' -a pkgs <<"~"
-pango-1.36.3,http://ftp.gnome.org/pub/gnome/sources/pango/1.36/pango-1.36.3.tar.xz,J,
+glib-2.40.0,http://ftp.gnome.org/pub/gnome/sources/glib/2.40/glib-2.40.0.tar.xz,J,--with-pic --enable-static --disable-shared
+harfbuzz-0.9.27,http://www.freedesktop.org/software/harfbuzz/release/harfbuzz-0.9.27.tar.bz2,j,
+fontconfig-2.11.1,http://www.freedesktop.org/software/fontconfig/release/fontconfig-2.11.1.tar.bz2,j,--with-pic --enable-static --disable-shared
+gobject-introspection-1.31.22,gobject-introspection-1.31.22.tar.xz,J,
+pango-1.36.3,http://ftp.gnome.org/pub/gnome/sources/pango/1.36/pango-1.36.3.tar.xz,J,--disable-dependency-tracking --disable-silent-rules --enable-introspection=yes
 ~
 
 IFS="$cIFS"
