@@ -80,3 +80,9 @@ EOF
 echo "-----> Prove it worked"
 echo `pkg-config --static --libs glib-2.0 gdk-pixbuf-2.0 cairo pango`
 echo `pkg-config --cflags glib-2.0 gdk-pixbuf-2.0 cairo pango`
+echo $PATH
+echo $LD_LIBRARY_PATH
+echo $LIBRARY_PATH
+echo $PKG_CONFIG_PATH
+echo $CPPPATH
+echo $CPATH
