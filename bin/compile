@@ -47,6 +47,8 @@ function vendor() {
 echo "-----> Vendoring binaries"
 vendor "https://s3.amazonaws.com/mojodna-heroku/cairo-1.12.16-1.tar.gz"  "$BUILD_DIR/vendor/cairo"
 vendor "https://s3.amazonaws.com/mojodna-heroku/freetype-2.5.0-1.tar.gz" "$BUILD_DIR/vendor/freetype"
+vendor "http://miadzin.org/libgdk-pixbuf2.0.tgz"  "$BUILD_DIR/vendor/gdk-pixbuf"
+vendor "http://miadzin.org/libpixman-1.tgz"  "$BUILD_DIR/vendor/pixman-1"
 vendor "http://miadzin.org/libpango-1.30.0.tgz"  "$BUILD_DIR/vendor/pango"
 
 echo "-----> Configuring build environment"
