@@ -6,6 +6,7 @@ set -e # fail fast
 # parse params
 BUILD_DIR=$1
 CACHE_DIR=$2
+ENVFILE=$3
 BUILDPACK_NAME=pango
 
 # use pigz if available for (potentially) faster decompression
@@ -73,6 +74,10 @@ export PKG_CONFIG_PATH="\$PKG_CONFIG_PATH:${PKG_CONFIG_PATH//$BUILD_DIR//app}"
 export CPPPATH="\$CPPPATH:${CPPPATH//$BUILD_DIR//app}"
 export CPATH="\$CPATH:${CPATH//$BUILD_DIR//app}"
 EOF
+
+echo "\$PKG_CONFIG_PATH:$PKG_CONFIG_PATH" > "$ENVFILE/PKG_CONFIG_PATH"
+
+echo $PKG_CONFIG_PATH
 
 echo "-----> Prove it worked"
 echo `pkg-config --static --libs glib-2.0 gdk-pixbuf-2.0 cairo pango`
