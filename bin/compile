@@ -45,7 +45,7 @@ function vendor() {
 }
 
 echo "-----> Vendoring binaries"
-vendor "http://miadzin.org/libpango.tgz"  "$BUILD_DIR/vendor/pango"
+vendor "http://miadzin.org/libpango-1.30.0.tar.gz"  "$BUILD_DIR/vendor/pango"
 
 echo "-----> Configuring build environment"
 
