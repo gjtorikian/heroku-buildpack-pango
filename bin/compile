@@ -45,7 +45,9 @@ function vendor() {
 }
 
 echo "-----> Vendoring binaries"
-vendor "http://miadzin.org/libpango-1.30.0.tar.gz"  "$BUILD_DIR/vendor/pango"
+vendor "https://s3.amazonaws.com/mojodna-heroku/cairo-1.12.16-1.tar.gz"  "$BUILD_DIR/vendor/cairo"
+vendor "https://s3.amazonaws.com/mojodna-heroku/freetype-2.5.0-1.tar.gz" "$BUILD_DIR/vendor/freetype"
+vendor "http://miadzin.org/libpango-1.30.0.tgz"  "$BUILD_DIR/vendor/pango"
 
 echo "-----> Configuring build environment"
 
