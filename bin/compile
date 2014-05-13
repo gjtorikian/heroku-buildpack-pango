@@ -24,9 +24,8 @@ function vendor() {
   binary="$1"
   path="$2"
 
-  echo "Fetching $binary" | indent
   mkdir -p $path
-  curl $binary -s -o - | tar xz -C $path -f -
+  tar xz -C $path -f vendor/$binary
 
   if [ -d "$path/bin" ]; then
     PATH="$path/bin${PATH:+:$PATH}"
@@ -45,10 +44,10 @@ function vendor() {
 }
 
 echo "-----> Vendoring binaries"
-vendor "http://cl.ly/123r033J2m0c/cairo-1.12.16-1.tar.gz"  "$BUILD_DIR/vendor/cairo"
-vendor "http://cl.ly/3K081d3W003u/gdk-pixbuf-2.10.0-1.tar.gz"  "$BUILD_DIR/vendor/gdk-pixbuf"
-vendor "http://cl.ly/3l152x3s1l0e/pixman-0.30.2-1.tar.gz"  "$BUILD_DIR/vendor/pixman"
-vendor "http://cl.ly/0o1d0W3g1E0S/pango-1.3.6-1.tar.gz"  "$BUILD_DIR/vendor/pango"
+vendor "cairo-1.12.16-1.tar.gz"  "$BUILD_DIR/vendor/cairo"
+vendor "gdk-pixbuf-2.10.0-1.tar.gz"  "$BUILD_DIR/vendor/gdk-pixbuf"
+vendor "pixman-0.30.2-1.tar.gz"  "$BUILD_DIR/vendor/pixman"
+vendor "pango-1.3.6-1.tar.gz"  "$BUILD_DIR/vendor/pango"
 
 echo "-----> Configuring build environment"
 cat <<EOF > export
