@@ -45,14 +45,12 @@ function vendor() {
 }
 
 echo "-----> Vendoring binaries"
-vendor "https://s3.amazonaws.com/mojodna-heroku/cairo-1.12.16-1.tar.gz"  "$BUILD_DIR/vendor/cairo"
-vendor "https://s3.amazonaws.com/mojodna-heroku/freetype-2.5.0-1.tar.gz" "$BUILD_DIR/vendor/freetype"
-vendor "http://miadzin.org/libgdk-pixbuf2.0.tgz"  "$BUILD_DIR/vendor/gdk-pixbuf"
-vendor "http://miadzin.org/libpixman-1.tgz"  "$BUILD_DIR/vendor/pixman-1"
-vendor "http://miadzin.org/libpango-1.30.0.tgz"  "$BUILD_DIR/vendor/pango"
+vendor "http://cl.ly/123r033J2m0c/cairo-1.12.16-1.tar.gz"  "$BUILD_DIR/vendor/cairo"
+vendor "http://cl.ly/3K081d3W003u/gdk-pixbuf-2.10.0-1.tar.gz"  "$BUILD_DIR/vendor/gdk-pixbuf"
+vendor "http://cl.ly/3l152x3s1l0e/pixman-0.30.2-1.tar.gz"  "$BUILD_DIR/vendor/pixman"
+vendor "http://cl.ly/0o1d0W3g1E0S/pango-1.3.6-1.tar.gz"  "$BUILD_DIR/vendor/pango"
 
 echo "-----> Configuring build environment"
-
 cat <<EOF > export
 export PATH="$PATH"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH"
