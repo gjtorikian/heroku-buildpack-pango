@@ -59,6 +59,10 @@ export CPPPATH="$CPPPATH"
 export CPATH="$CPATH"
 EOF
 
+echo "WTF?"
+echo $PKG_CONFIG_PATH
+ls $BUILD_DIR/vendor/gdk-pixbuf/lib/pkgconfig
+
 echo "-----> Verifying build enviornment"
 source export
 pkg-config --static --libs glib-2.0 gdk-pixbuf-2.0 cairo pango > /dev/null
